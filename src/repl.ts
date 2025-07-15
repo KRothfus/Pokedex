@@ -1,3 +1,11 @@
+import { createInterface } from "readline"
+import { getCommands } from "./command_registry.js"
+
+const rl = createInterface({
+    input: process.stdin,
+    output: process.stdout,
+    prompt: "> ", 
+})
 export function cleanInput(input: string): string[]{
     let res = input.toLowerCase().trim().split(" ")
     const res_arr: string[] = []
@@ -10,5 +18,21 @@ export function cleanInput(input: string): string[]{
 }
 
 export function startREPL(){
-    let input = process.stdin
+    rl.prompt()
+    rl.on("line", (data)=>{
+        const clean_data = cleanInput(data)
+        if (clean_data.length === 0){
+            rl.prompt()
+        } else {
+           const commands = getCommands();
+           const command = commands[clean_data[0]];
+           if (command){
+            command.callback(commands)            
+           }else{
+            console.log("Unknown Command")
+           }
+        }
+        rl.prompt()
+    
+    })
 }
