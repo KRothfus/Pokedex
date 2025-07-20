@@ -9,7 +9,7 @@ export function initState() {
     const rl = createInterface({
         input: process.stdin,
         output: process.stdout,
-        prompt: "> ",
+        prompt: "pokedex > ",
     });
     const commands = {
         exit: {
