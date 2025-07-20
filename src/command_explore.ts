@@ -1,10 +1,10 @@
 import { State } from "./state.js";
 
-export async function commandExplore(location_area_name: string){
-    const url = `https://pokeapi.co/api/v2/location-area/${location_area_name}`
+export async function commandExplore(state: State){
+    const url = `https://pokeapi.co/api/v2/location-area/${state.exploreLocation}`
     const response = await fetch(url)
     const data = await response.json()
-    console.log(`Exploring ${location_area_name}`)
+    console.log(`Exploring ${state.exploreLocation}`)
     console.log(`Found Pokemon:`)
     for(let i = 0; i < data.pokemon_encounters.length;i++){
         console.log(`- ${data.pokemon_encounters[i]['pokemon']["name"]}`)

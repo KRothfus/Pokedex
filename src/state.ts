@@ -5,6 +5,7 @@ import { commandMap } from "./command_map.js";
 import { commandMapb } from "./command_map_b.js";
 import process from "process";
 import { PokeAPI } from "./pokeapi.js";
+import { commandExplore } from "./command_explore.js";
 
 export type CLICommand = {
   name: string;
@@ -19,6 +20,7 @@ export type State = {
     pokeapi: PokeAPI,
     previousLocationURL: string,
     nextLocationURL: string,
+    exploreLocation: string,
 }
 
 export function initState(){
@@ -48,6 +50,11 @@ const commands = {
       name: "mapb",
       description: "Displays previous locations",
       callback: commandMapb
+    },
+    explore:{
+      name: "explore",
+      description: "Lists the pokemon in an area",
+      callback: commandExplore
     }
 
     // can add more commands here
@@ -60,7 +67,7 @@ const pokeapi = new PokeAPI
   pokeapi: pokeapi,
   previousLocationURL: "",
   nextLocationURL: "",
-    
+  exploreLocation: "",
 }
 }
 

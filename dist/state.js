@@ -5,6 +5,7 @@ import { commandMap } from "./command_map.js";
 import { commandMapb } from "./command_map_b.js";
 import process from "process";
 import { PokeAPI } from "./pokeapi.js";
+import { commandExplore } from "./command_explore.js";
 export function initState() {
     const rl = createInterface({
         input: process.stdin,
@@ -31,6 +32,11 @@ export function initState() {
             name: "mapb",
             description: "Displays previous locations",
             callback: commandMapb
+        },
+        explore: {
+            name: "explore",
+            description: "Lists the pokemon in an area",
+            callback: commandExplore
         }
         // can add more commands here
     };
@@ -41,5 +47,6 @@ export function initState() {
         pokeapi: pokeapi,
         previousLocationURL: "",
         nextLocationURL: "",
+        exploreLocation: "",
     };
 }
