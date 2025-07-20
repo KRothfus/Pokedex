@@ -1,5 +1,6 @@
 import { appendFile } from "fs";
 import { Cache } from "./pokecache.js";
+import { commandExplore } from "./command_explore.js";
 
 export class PokeAPI {
   private static readonly baseURL = "https://pokeapi.co/api/v2";
@@ -31,6 +32,7 @@ export class PokeAPI {
     this.cache.add(url, data)
     return data;
   }
+
 }
 
 export type ShallowLocations = {

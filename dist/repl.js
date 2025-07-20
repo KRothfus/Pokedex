@@ -19,7 +19,7 @@ export async function startREPL(state) {
             const command = state.commands[clean_data[0]];
             if (command) {
                 try {
-                    await command.callback(state);
+                    await command.callback(state, ...clean_data.slice(1));
                 }
                 catch (error) {
                     console.log(error);

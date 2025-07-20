@@ -47,6 +47,6 @@ export function initState() {
         pokeapi: pokeapi,
         previousLocationURL: "",
         nextLocationURL: "",
-        exploreLocation: "",
+        cache: pokeapi.cache,
     };
 }

@@ -20,7 +20,7 @@ export type State = {
     pokeapi: PokeAPI,
     previousLocationURL: string,
     nextLocationURL: string,
-    exploreLocation: string,
+    cache: PokeAPI["cache"],
 }
 
 export function initState(){
@@ -67,7 +67,7 @@ const pokeapi = new PokeAPI
   pokeapi: pokeapi,
   previousLocationURL: "",
   nextLocationURL: "",
-  exploreLocation: "",
+  cache: pokeapi.cache,
 }
 }
 
